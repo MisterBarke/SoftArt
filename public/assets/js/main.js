@@ -1,3 +1,9 @@
+let from_name = document.getElementById('from_name');
+let email_id = document.getElementById('email_id');
+let subject = document.getElementById('subject');
+let message = document.getElementById('message');
+
+
 /**
 * Template Name: Scaffold
 * Updated: Mar 10 2023 with Bootstrap v5.2.3
@@ -259,39 +265,23 @@ document.getElementById('form')
  .addEventListener('submit', function(event) {
    event.preventDefault();
 
-   btn.value = 'Sending...';
+   btn.value = 'en cours...';
 
    const serviceID = 'default_service';
    const templateID = 'template_kekq23f';
 
    emailjs.sendForm(serviceID, templateID, this)
     .then(() => {
-      btn.value = 'Send Email';
+      btn.value = 'Envoyer';
+      from_name.value = ""
+      email_id.value = ""
+      subject.value = ""
+      message.value = ""
 
       alert('Votre message a été envoyé avec succès!');
     }, (err) => {
       console.log(err);
-      btn.value = 'Send Email';
-      alert(JSON.stringify(err));
-    });
-});
-const btn2 = document.getElementById('button');
-
-document.getElementById('form')
- .addEventListener('submit', function(event) {
-   event.preventDefault();
-
-   btn.value = 'Sending...';
-
-   const serviceID = 'default_service';
-   const templateID = 'template_8fpbl5e';
-
-   emailjs.sendForm(serviceID, templateID, this)
-    .then(() => {
-      btn.value = 'Souscrire';
-      alert('Sent!');
-    }, (err) => {
-      btn.value = 'Souscrire';
+      btn.value = 'Envoyer';
       alert(JSON.stringify(err));
     });
 });
